@@ -1,0 +1,25 @@
+language: php
+
+php:
+    - 7.3
+
+services:
+    - postgresql
+
+cache:
+    yarn: true
+    directories:
+        - $HOME/.composer/cache/files
+
+before_install:
+    - phpenv config-rm xdebug.ini
+
+install:
+    - composer install
+
+script:
+    - bin/console security:check
+    - bin/phpcs
+    - bin/phpstan analyse src/ --level=max
+    - bin/phpstan analyse tests/ --level=max
+    - make test

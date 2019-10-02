@@ -1,0 +1,17 @@
+default:
+    formatters:
+        pretty:
+            paths: false
+
+    suites:
+        default:
+            contexts:
+                - Tests\Behat\Fixture\FixtureContext
+                - Tests\Behat\Api\RequestContext
+                - Tests\Behat\Api\ResponseContext
+                - Tests\Behat\Api\JsonResponseContext
+                - Tests\Behat\Api\AuthenticationContext
+                - Tests\Behat\User\UserContext
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension: ~
